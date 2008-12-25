@@ -1,0 +1,4 @@
+*.db
+/apps/
+/django/
+/site_media/

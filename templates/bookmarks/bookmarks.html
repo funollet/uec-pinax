@@ -1,0 +1,12 @@
+{% extends "site_base.html" %}
+
+{% block body %}
+<ul>
+{% for bkm in bookmarks %}
+    <li>
+        <a href="{{ bkm.url }}">{{ bkm.description }}</a>
+        <p>{{ bkm.note }}</p>
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,100 @@
+{% load i18n cms_base %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="{{ LANGUAGE_CODE }}">
+
+<head>
+<title>{{ site_title }} | {{ title }}</title>
+{% block extrahead %}
+<link rel="stylesheet" href="/site_media/blueprint/screen.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="/site_media/blueprint/print.css" type="text/css" media="print"> 
+<!--[if IE]>
+<link rel="stylesheet" href="/site_media/blueprint/ie.css" type="text/css" media="screen, projection">
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="/site_media/superfish/css/superfish.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/site_media/superfish/css/superfish-vertical.css" media="screen">
+<link rel="stylesheet" href="/site_media/css/uec.css" type="text/css" media="screen, projection">
+<script type="text/javascript" src="/site_media/js/jquery-1.2.6.min.js"></script>
+<script type="text/javascript" src="/site_media/superfish/js/superfish.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() { 
+        $('ul.sf-menu').superfish({
+            disableHI: true,
+            speed: 'slow',
+        }); 
+    });
+</script>
+{% endblock %}
+</head>
+
+<body>{% block body %}
+<div class="container" align="center">
+
+{% block header %}
+<div class="span-24">
+  <a href="/ca/"><img src="/site_media/img/banner.jpg"></a>
+</div>
+<div class="span-24">
+  <img src="/site_media/img/biblioteca.jpg">
+  <img src="/site_media/img/entitat.jpg">
+  <img src="/site_media/img/foro.jpg">
+  <img src="/site_media/img/links.jpg">
+  <img src="/site_media/img/secretaria.jpg">
+</div>
+{% endblock %}
+
+
+<div class="span-4" align="left">
+{% block menu %}
+    {% cms_navigation_level 1 as nav %}
+    <ul class="sf-menu sf-vertical">
+    {% for mainpage in nav %}
+        <li>
+            <a href="{% cms_link mainpage %}">{{ mainpage.title|escape }}</a>
+            {% cms_subpages mainpage as subpages %}
+            {% if subpages %}
+            <ul>
+                {% for subpage in subpages %}
+                    <li><a href="{% cms_link subpage %}">{{ subpage.title|escape }}</a></li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}
+</div>
+
+<!-- content -->
+<div class="span-16" align="left">
+{% block content %}
+  <hr/>
+  <div class="breadcrumbs">{% cms_breadcrumbs %}</div>
+  <hr/>
+  {{ content }}
+{% endblock %}
+</div>
+
+<div class="span-4 last" align="center">
+  <a href="/seccions/muntanya/100cims/100cims.htm"><img src="/site_media/img/100cims.jpg"></a>
+  <a href="http://www.glacera.com/"><img src="/site_media/img/glacera.jpg"></a>
+  <a href="/secretaria/@mail.htm"><img src="/site_media/img/mail.jpg"></a>
+  <a href="/"><img src="/site_media/img/mini_logoleft.jpg"></a>
+</div>
+
+<div class="span-4">&nbsp;</div>
+<div class="span-16" align="center"><hr /></div>
+<div class="span-4 last">&nbsp;</div>
+
+<div class="span-24" align="center">
+    {{ navigation }}
+    <img src="/site_media/img/azimut.jpg">
+    <img src="/site_media/img/feec.jpg">
+    <br><b>Unió Excursionista de Catalunya - Gràcia.</b>
+    <br>c/ Encarnació, 131-133, baixos. 08025 Barcelona. Telèfon 93 285 34 54. Fax 93 28533 65
+    <br><a href="/entitat/onsom.htm">Mapa situaci&oacute;</a>
+
+</div>
+
+</div>
+{% endblock %}</body>
+</html>
