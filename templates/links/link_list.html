@@ -1,0 +1,33 @@
+{% extends "cms/base.html" %}
+{% load markup %}
+
+{% block header-menu %}{% endblock %}
+
+{% block content %}
+
+{% regroup object_list by category as grouped %}
+<div class="link-category">
+{% for group in grouped %}
+    <h2>{{ group.grouper }}</h2>
+    <ul class="link">
+        {% for item in group.list %}
+            <li>
+            <a href="{{ item.url }}">{{ item.name }}</a>
+            {% if item.description %}
+                <p>{{ item.description|markdown }}</p>
+            {% endif %}
+            {% if item.via_url %}
+                <p>Via: <a href="{{ item.via_url }}">{{ item.via_name }}</a></p>
+            {% endif %}
+            {% if not item.via_url %}
+                {% if item.via_name %}
+                <p>Via: {{ item.via_name }}</p>
+                {% endif %}
+            {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+body {  
+    background-color: #cdcfc5 ;
+}
+hr {
+    background-color: #000000 ;
+}
+
+/************ Superfish menu */
+.sf-menu a, .sf-menu a:visited  { /* visited pseudo selector so IE6 applies text colour*/
+    color: #ffffff;
+    font-size: larger ;
+    font-weight: bold ;
+    font-style: italic ;
+}
+.sf-menu li {
+    background:     #5a7eba;
+}
+.sf-menu li li {
+    background:     #5a7eba;
+}
+.sf-menu li li li {
+    background:     #5a7eba;
+}
+.sf-menu li:hover, .sf-menu li.sfHover,
+.sf-menu a:focus, .sf-menu a:hover, .sf-menu a:active {
+    background:     #4c6b9d;
+    outline:        0;
+}
+
+/************ PlanetaUEC */
+#photoplanet a {
+    font-size: 15px ;
+    color: #29A9FF;
+    text-decoration: none;
+}
+
+#photoplanet a:hover {
+    text-decoration: underline;
+}
+
+/************ Links page */
+ul.link {
+    list-style-type: none ;
+}
+    
+.link a {
+    font-size: 15px ;
+    color: #29A9FF;
+    text-decoration: none;
+}
+
+.link a:hover {
+    text-decoration: underline;
+}
