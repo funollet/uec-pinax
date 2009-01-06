@@ -19,7 +19,8 @@ urlpatterns = patterns('',
     (r'^announcements/', include('announcements.urls')),
     (r'^bookmarks/', include('bookmarks.urls')),
     (r'^links/', include('links.urls')),
-
+    (r'^planetauec/', include('feedme.urls')),
+    
     (r'^admin/(.*)', admin.site.root),
     (r'', include('cms.urls')),
 )

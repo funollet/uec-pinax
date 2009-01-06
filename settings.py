@@ -137,6 +137,7 @@ INSTALLED_APPS = (
     'misc',
     'cms',
     'links',
+    'feedme', 'feedme-photos',
     
     'django.contrib.admin',
 
@@ -159,6 +160,8 @@ LOGIN_REDIRECT_URLNAME = "what_next"
 CMS_LANGUAGE_DEFAULT = 'ca'
 CMS_DEFAULT_TEMPLATE = 'cms/base.html'
 CMS_DEFAULT_CONTENT_TYPE = 'markdown'
+
+FEEDME_CACHE_BACKEND = 'file://%s' % os.path.join(PROJECT_ROOT, 'cache', 'feedme')
 
 # local_settings.py can be used to override environment-specific settings
 # like database and email that differ between development and production.
