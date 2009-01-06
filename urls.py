@@ -21,6 +21,7 @@ urlpatterns = patterns('',
     (r'^links/', include('links.urls')),
     (r'^planetauec/', include('feedme.urls')),
     
+    (r'^admin/filebrowser/', include('filebrowser.urls')),
     (r'^admin/(.*)', admin.site.root),
     (r'', include('cms.urls')),
 )

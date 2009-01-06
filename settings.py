@@ -2,19 +2,18 @@
 # Django settings for basic pinax project.
 
 import sys
-
-from os.path import abspath, dirname, join
+import os.path
 from site import addsitedir
 
-PINAX_ROOT = abspath(join(dirname(__file__), "../pinax-0.5.0"))
-PROJECT_ROOT = abspath(dirname(__file__))
+PINAX_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "../pinax-0.5.0"))
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
-path = addsitedir(join(PINAX_ROOT, "libs/external_libs"), set())
+path = addsitedir(os.path.join(PINAX_ROOT, "libs/external_libs"), set())
 if path:
     sys.path = list(path) + sys.path
-sys.path.insert(0, join(PINAX_ROOT, "apps/external_apps"))
-sys.path.insert(0, join(PINAX_ROOT, "apps/local_apps"))
-sys.path.insert(0, join(PROJECT_ROOT, "apps"))
+sys.path.insert(0, os.path.join(PINAX_ROOT, "apps/external_apps"))
+sys.path.insert(0, os.path.join(PINAX_ROOT, "apps/local_apps"))
+sys.path.insert(0, os.path.join(PROJECT_ROOT, "apps"))
 
 
 DEBUG = True
@@ -53,9 +52,6 @@ USE_I18N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-
-import os.path
-
 MEDIA_ROOT = os.path.join(os.path.dirname(__file__), "site_media")
 
 # URL that handles the media served from MEDIA_ROOT.
@@ -138,6 +134,7 @@ INSTALLED_APPS = (
     'cms',
     'links',
     'feedme', 'feedme-photos',
+    'filebrowser',
     
     'django.contrib.admin',
 
@@ -162,6 +159,9 @@ CMS_DEFAULT_TEMPLATE = 'cms/base.html'
 CMS_DEFAULT_CONTENT_TYPE = 'markdown'
 
 FEEDME_CACHE_BACKEND = 'file://%s' % os.path.join(PROJECT_ROOT, 'cache', 'feedme')
+
+FILEBROWSER_URL_WWW = os.path.join(MEDIA_URL, 'uploads', '')
+FILEBROWSER_PATH_SERVER = os.path.join(MEDIA_ROOT, 'uploads', '')
 
 # local_settings.py can be used to override environment-specific settings
 # like database and email that differ between development and production.
